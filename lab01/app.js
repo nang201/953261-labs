@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method === "GET" && req.url === "/api/me") {
     res.writeHead(200, { "Content-Type": "application/json" });
-
+//This is myInfo
     const myInfo = {
         name: "Lily",
         studentId: "953261",
@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(myInfo));
     return;
 }
-
+//change 200 into 404
   // TODO: replace this with a proper 404 response
   res.writeHead(404, { "Content-Type": "text/plain" });
   res.end("Not Found");
