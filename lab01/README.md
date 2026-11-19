@@ -18,8 +18,6 @@ Then open <http://localhost:3000> and <http://localhost:3000/api/me>.
 
 ## What I learned today
 
-_Write 2–3 sentences in your own words: what happens between typing a URL and seeing the page?_
-
 - When we type a URL, the browser uses DNS to find the server's IP address. Then it sends an HTTP request to the server, and the server sends back the webpage. Finally, the browser loads and displays the page on our screen.
 
 ## AI-use statement
