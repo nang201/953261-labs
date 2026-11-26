@@ -90,10 +90,47 @@ export function averageOrder(orders, menu) {
 // Task 9 — return the NAME of the item with the highest total quantity sold.
 export function bestSeller(orders, menu) {
   // TODO
+  const quantities = orders.reduce((result, order) => {
+    return order.items.reduce((items, orderItem) => {
+      return {
+        ...items,
+        [orderItem.menuId]:
+        (items[orderItem.menuId] || 0) + orderItem.qty
+      };
+    }, result);
+  }, {});
+
+  const bestId = Object.entries(quantities).reduce((best,current) => {
+    return current[1] > best[1] ? current : best;
+  }) [0];
+
+  return findItem(menu, bestId)?.name;
 }
 
 // Task 10 — group item names by category:
 // { drink: ["Thai Iced Tea", ...], food: [...], dessert: [...] }
 export function namesByCategory(menu) {
   // TODO
+  return menu.reduce((groups, item) => {
+    return {
+      ...groups,
+      [item.category]: [
+        ...groups[item.category],
+        item.name
+      ]
+    };
+  }, {
+    drink: [],
+    food: [],
+    dessert: []
+  });
+}
+
+// partD
+export function cheapDrinks(menu, maxPrice) {
+  return menu
+  .filter((item) =>
+  item.category === "drink" && item.available === true && item.price <= maxPrice)
+  .sort((a,b) => a.price - b.price)
+  .map((item)=> menuLine(item));
 }
